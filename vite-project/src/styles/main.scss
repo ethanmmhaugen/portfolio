@@ -1,0 +1,24 @@
+@import "../design-system/variables.scss";
+@import "../design-system/mixins.scss";
+
+body {
+  font-family: $font-stack;
+  background-color: $primary-color;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  @include flex-center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.no-click {
+    cursor: not-allowed;
+}
