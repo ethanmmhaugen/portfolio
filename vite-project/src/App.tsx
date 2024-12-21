@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import './styles/main.scss';
+import { useState } from 'react';
 import SiteRoutes from './routes/SiteRoutes';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-    <SiteRoutes/>
-  )
+  return <SiteRoutes />;
 }
 
-export default App
+export default App;

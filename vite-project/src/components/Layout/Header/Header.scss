@@ -4,4 +4,20 @@
   left: 0;
   top: 0;
   z-index: 999999;
+  height: $header-height;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-color;
+
+  .home-icon {
+    margin-left: 30px;
+    @include icon-size-36;
+  }
+
+  .links-container {
+    margin-right: 250px;
+    align-items: center;
+  }
 }

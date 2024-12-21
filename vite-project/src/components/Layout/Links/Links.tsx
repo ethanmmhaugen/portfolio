@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Links.scss';
 
 const LINK_NAMES = {
   home: 'HomePage',

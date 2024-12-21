@@ -1,0 +1,47 @@
+/* themes.css */
+
+/* Base Styles */
+:root {
+  --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --header-height: 70px;
+}
+
+/* Theme 1: Night Sky */
+.theme-1 {
+  --primary-color: #0d0d0d;
+  --secondary-color: #1a1a1a;
+  --default-text-color: #e0e0e0;
+  --highlight-color-1: #e50914; /* Accent Red */
+  --highlight-color-2: #ffc107; /* Amber */
+  --highlight-color-3: #03dac6; /* Teal */
+}
+
+/* Theme 2: Deep Space */
+.theme-2 {
+  --primary-color: #1b1b2f;
+  --secondary-color: #162447;
+  --default-text-color: #d4d4d4;
+  --highlight-color-1: #e43f5a; /* Coral */
+  --highlight-color-2: #e3e3e3; /* Light Gray */
+  --highlight-color-3: #f2d388; /* Sand */
+}
+
+/* Theme 3: Forest Twilight */
+.theme-3 {
+  --primary-color: #0a0a0a;
+  --secondary-color: #1f2a44;
+  --default-text-color: #cccccc;
+  --highlight-color-1: #4caf50; /* Green */
+  --highlight-color-2: #ffc107; /* Amber */
+  --highlight-color-3: #ff5722; /* Deep Orange */
+}
+
+/* Theme 4: Sapphire Night */
+.theme-4 {
+  --primary-color: #0b0c10;
+  --secondary-color: #1f2833;
+  --default-text-color: #e8e8e8;
+  --highlight-color-1: #c5c6c7; /* Light Gray */
+  --highlight-color-2: #66fcf1; /* Cyan */
+  --highlight-color-3: #45a29e; /* Teal */
+}
