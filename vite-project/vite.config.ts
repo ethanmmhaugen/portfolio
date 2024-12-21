@@ -9,17 +9,14 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `
-          @use "@/design-system/variables" as vars;
-          @use "@/design-system/mixins" as mixins;
-        `,
-        includePaths: [path.resolve(__dirname, 'src/design-system')],
+        additionalData: `@import "@design-system/styles/index.scss";`,
       },
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@design-system': path.resolve(__dirname, 'design-system'),
+      '@icons': path.resolve(__dirname, 'src/assets/SVG'),
     },
   },
 });

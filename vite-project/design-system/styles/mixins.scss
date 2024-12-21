@@ -1,0 +1,15 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin icon-size-24 {
+  height: 24px;
+  width: 24px;
+}
+
+@mixin icon-size-36 {
+  height: 36px;
+  width: 36px;
+}

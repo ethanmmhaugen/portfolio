@@ -1,0 +1,47 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+body {
+  background-color: var(--primary-color);
+  color: var(--default-text-color);
+  font-family: var(--font-stack);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+  height: var(--header-height);
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+button {
+  background-color: var(--highlight-color-2);
+  color: var(--secondary-text-color);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Focus States for Accessibility */
+button:focus,
+.theme-switcher button:focus {
+  outline: 2px solid var(--highlight-color-1);
+  outline-offset: 2px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.no-click {
+  cursor: not-allowed;
+}

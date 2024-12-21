@@ -1,0 +1,27 @@
+/* src/styles/App.css */
+
+.theme-switcher button.active {
+  background-color: var(--highlight-color-3);
+  color: var(--secondary-text-color-dark);
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-switcher button {
+  padding: 8px 16px;
+  background-color: var(--highlight-color-2);
+  color: var(--secondary-text-color-light);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-switcher button.active,
+.theme-switcher button:hover {
+  background-color: var(--highlight-color-3);
+  color: var(--secondary-text-color-dark);
+}
