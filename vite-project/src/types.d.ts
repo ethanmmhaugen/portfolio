@@ -3,7 +3,8 @@
 export type ThemeName = 'theme-1' | 'theme-2' | 'theme-3' | 'theme-4';
 
 export interface ThemeContextType {
-  theme: ThemeName;
-  changeTheme: (theme: ThemeName) => void;
-  themes: ThemeName[];
+  selectedTheme: ThemeType;
+  changeTheme: (theme: ThemeType) => void;
+  themeOptions: ThemeType[];
+  setThemeOptions: Dispatch<SetStateAction<ThemeType[]>>;
 }

@@ -5,6 +5,7 @@ import './Links.scss';
 const LINK_NAMES = {
   home: 'HomePage',
   sandbox: 'Sandbox',
+  theme: 'Theme',
 };
 
 type Link = {
@@ -19,6 +20,7 @@ const Links = () => {
   const links: Link[] = [
     { name: LINK_NAMES.home, path: '/' },
     { name: LINK_NAMES.sandbox, path: '/sandbox' },
+    { name: LINK_NAMES.theme, path: '/theme' },
   ];
 
   const handleOptionClick = (option: Link) => {

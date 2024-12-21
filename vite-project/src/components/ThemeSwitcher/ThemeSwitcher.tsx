@@ -1,32 +1,48 @@
 // src/components/ThemeSwitcher.tsx
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 import { ThemeName } from '../../types';
 import './ThemeSwitcher.scss';
+import { injectThemeCSS, ThemeType } from '../../services/theme';
+import Theme from './Theme/Theme';
 
 const ThemeSwitcher: React.FC = () => {
-  const { theme, changeTheme, themes } = useContext(ThemeContext);
+  const { themeOptions, setThemeOptions } = useContext(ThemeContext);
 
-  // Optional: Define human-readable theme names
-  const themeNames: Record<ThemeName, string> = {
-    'theme-1': 'Night Sky',
-    'theme-2': 'Deep Space',
-    'theme-3': 'Forest Twilight',
-    'theme-4': 'Sapphire Night',
+  // const themeNames: Record<ThemeName, string> = {
+  //   'theme-1': 'Night Sky',
+  //   'theme-2': 'Deep Space',
+  //   'theme-3': 'Forest Twilight',
+  //   'theme-4': 'Sapphire Night',
+  // };
+
+  const addTheme = () => {
+    const newTheme: ThemeType = {
+      name: 'TEST',
+      class: 'theme-5',
+      canEdit: true,
+      scss: {
+        primary_color: '#FF7E5F', // Warm Orange
+        secondary_color: '#FEB47B', // Soft Pink
+        default_text_color: '#FFFFFF', // White
+        secondary_text_color_light: '#FFE5D9', // Light Peach
+        secondary_text_color_dark: '#FEB47B', // Soft Pink (Same as Secondary Color)
+        highlight_color_1: '#FF6E7F', // Coral Pink
+        highlight_color_2: '#BFE9FF', // Sky Blue
+        highlight_color_3: '#A8EDEA', // Light Aqua
+      },
+    };
+
+    setThemeOptions((prevThemes: ThemeType[]) => [...prevThemes, newTheme]);
+    injectThemeCSS(newTheme);
   };
 
   return (
     <div className="theme-switcher">
-      {themes.map((themeName) => (
-        <button
-          key={themeName}
-          onClick={() => changeTheme(themeName)}
-          className={theme === themeName ? 'active' : ''}
-          aria-label={`Switch to ${themeNames[themeName]} theme`}
-        >
-          {themeNames[themeName]}
-        </button>
+      {themeOptions.map((theme: ThemeType) => (
+        <Theme theme={theme} />
       ))}
+      <button onClick={addTheme}>ADD NEW</button>
     </div>
   );
 };

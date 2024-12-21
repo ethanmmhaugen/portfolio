@@ -1,6 +1,7 @@
 // src/context/ThemeContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { ThemeContextType, ThemeName } from '../types';
+import { ThemeContextType } from '../types';
+import { initial_themes, ThemeType } from '../services/theme';
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -8,51 +9,56 @@ interface ThemeProviderProps {
 
 // Create the Theme Context with default values
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'theme-1',
+  selectedTheme: initial_themes[0],
   changeTheme: () => {},
-  themes: ['theme-1', 'theme-2', 'theme-3', 'theme-4'],
+  themeOptions: initial_themes,
+  setThemeOptions: () => {},
 });
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const themes: ThemeName[] = ['theme-1', 'theme-2', 'theme-3', 'theme-4'];
-  const [theme, setTheme] = useState<ThemeName>('theme-1');
+  const [themeOptions, setThemeOptions] = useState<ThemeType[]>(initial_themes);
+  const [selectedTheme, setSelectedTheme] = useState<ThemeType>(initial_themes[0]);
 
   // Load saved theme from localStorage on initial render
   useEffect(() => {
-    const savedTheme = localStorage.getItem('selectedTheme') as ThemeName | null;
-    if (savedTheme && themes.includes(savedTheme)) {
-      setTheme(savedTheme);
-      document.body.classList.add(savedTheme);
+    const savedTheme = localStorage.getItem('selectedTheme') as ThemeType | null;
+    if (savedTheme && themeOptions.includes(savedTheme)) {
+      setSelectedTheme(savedTheme);
+      document.body.classList.add(savedTheme.class);
     } else {
       document.body.classList.add('theme-1');
     }
     // Cleanup: Remove all themes except the active one
     return () => {
-      themes.forEach((themeName) => {
-        if (themeName !== savedTheme) {
-          document.body.classList.remove(themeName);
+      themeOptions.forEach((theme: ThemeType) => {
+        if (theme !== savedTheme) {
+          document.body.classList.remove(theme.class);
         }
       });
     };
-  }, [themes]);
+  }, [themeOptions]);
 
-  const changeTheme = (newTheme: ThemeName) => {
-    if (!themes.includes(newTheme)) return;
+  const changeTheme = (newTheme: ThemeType) => {
+    if (!themeOptions.includes(newTheme)) return;
 
     // Remove all existing theme classes
-    themes.forEach((themeName) => {
-      document.body.classList.remove(themeName);
+    themeOptions.forEach((theme: ThemeType) => {
+      document.body.classList.remove(theme.class);
     });
 
     // Add the new theme class
-    document.body.classList.add(newTheme);
+    document.body.classList.add(newTheme.class);
 
     // Update state
-    setTheme(newTheme);
+    setSelectedTheme(newTheme);
 
     // Save to localStorage
-    localStorage.setItem('selectedTheme', newTheme);
+    localStorage.setItem('selectedTheme', newTheme.toString());
   };
 
-  return <ThemeContext.Provider value={{ theme, changeTheme, themes }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ selectedTheme, changeTheme, themeOptions, setThemeOptions }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };

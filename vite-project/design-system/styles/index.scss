@@ -21,15 +21,6 @@ main {
   padding: 20px;
 }
 
-p {
-  color: var(--highlight-color-1);
-  text-decoration: none;
-}
-
-p:hover {
-  text-decoration: underline;
-}
-
 button {
   background-color: var(--highlight-color-2);
   color: var(--secondary-text-color);
@@ -38,10 +29,6 @@ button {
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--highlight-color-3);
 }
 
 /* Focus States for Accessibility */
