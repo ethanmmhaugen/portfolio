@@ -17,6 +17,7 @@ export default defineConfig({
     alias: {
       '@design-system': path.resolve(__dirname, 'design-system'),
       '@icons': path.resolve(__dirname, 'src/assets/SVG'),
+      '@images': path.resolve(__dirname, 'src/assets/images'),
     },
   },
 });

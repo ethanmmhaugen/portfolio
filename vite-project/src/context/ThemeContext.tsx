@@ -13,30 +13,46 @@ export const ThemeContext = createContext<ThemeContextType>({
   changeTheme: () => {},
   themeOptions: initial_themes,
   setThemeOptions: () => {},
+  removeTheme: () => {},
 });
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [themeOptions, setThemeOptions] = useState<ThemeType[]>(initial_themes);
   const [selectedTheme, setSelectedTheme] = useState<ThemeType>(initial_themes[0]);
 
+  const defaultTheme = initial_themes[0];
   // Load saved theme from localStorage on initial render
   useEffect(() => {
-    const savedTheme = localStorage.getItem('selectedTheme') as ThemeType | null;
-    if (savedTheme && themeOptions.includes(savedTheme)) {
+    const savedThemeString = localStorage.getItem('selectedTheme');
+    let savedTheme: ThemeType | null = null;
+
+    if (savedThemeString) {
+      try {
+        savedTheme = JSON.parse(savedThemeString) as ThemeType;
+      } catch (error) {
+        console.error('Error parsing saved theme:', error);
+      }
+    }
+
+    if (savedTheme && themeOptions.some((theme) => theme.class === savedTheme.class)) {
       setSelectedTheme(savedTheme);
       document.body.classList.add(savedTheme.class);
     } else {
-      document.body.classList.add('theme-1');
+      setSelectedTheme(defaultTheme);
+      document.body.classList.add(defaultTheme.class);
     }
+
     // Cleanup: Remove all themes except the active one
     return () => {
       themeOptions.forEach((theme: ThemeType) => {
-        if (theme !== savedTheme) {
+        if (!(savedTheme && theme.class === savedTheme.class)) {
           document.body.classList.remove(theme.class);
         }
       });
     };
-  }, [themeOptions]);
+    // Run only once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Removed themeOptions from dependencies
 
   const changeTheme = (newTheme: ThemeType) => {
     if (!themeOptions.includes(newTheme)) return;
@@ -53,11 +69,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     setSelectedTheme(newTheme);
 
     // Save to localStorage
-    localStorage.setItem('selectedTheme', newTheme.toString());
+    localStorage.setItem('selectedTheme', JSON.stringify(newTheme));
+  };
+
+  const removeTheme = (themeClass: string) => {
+    document.body.classList.remove(themeClass);
+    if (themeClass === selectedTheme.class) {
+      setSelectedTheme(defaultTheme);
+      document.body.classList.add(defaultTheme.class);
+    }
   };
 
   return (
-    <ThemeContext.Provider value={{ selectedTheme, changeTheme, themeOptions, setThemeOptions }}>
+    <ThemeContext.Provider value={{ selectedTheme, changeTheme, themeOptions, setThemeOptions, removeTheme }}>
       {children}
     </ThemeContext.Provider>
   );

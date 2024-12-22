@@ -1,0 +1,50 @@
+.backgroundContainer {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+  border-radius: 4px;
+
+  .background {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 120%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    animation-name: panZoom;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    z-index: 1;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &:hover .background {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes panZoom {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.2) translate(-20px, -10px);
+  }
+  50% {
+    transform: scale(1.5) translate(0, 0);
+  }
+  75% {
+    transform: scale(1.1) translate(10px, 40px);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}

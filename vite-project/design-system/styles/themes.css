@@ -2,14 +2,12 @@
 
 /* Theme 1: Night Sky */
 .theme-1 {
-  --primary-color: #0d0d0d;
-  --secondary-color: #1a1a1a;
+  --primary-color: #222831;
+  --secondary-color: #393e46;
   --default-text-color: #e0e0e0;
-  --secondary-text-color-light: #f5f5f5; /* Soft Off-White */
-  --secondary-text-color-dark: #1a1a1a; /* Dark (Same as Secondary Color) */
-  --highlight-color-1: #e50914; /* Accent Red */
+  --highlight-color-1: #00adb5; /* Accent Red */
   --highlight-color-2: #ffc107; /* Amber */
-  --highlight-color-3: #03dac6; /* Teal */
+  --highlight-color-3: #eeeeee; /* Teal */
 }
 
 /* Theme 2: Deep Space */
@@ -17,8 +15,6 @@
   --primary-color: #1b1b2f;
   --secondary-color: #162447;
   --default-text-color: #d4d4d4;
-  --secondary-text-color-light: #f8f8f8; /* Very Light Off-White */
-  --secondary-text-color-dark: #162447; /* Dark (Same as Secondary Color) */
   --highlight-color-1: #e43f5a; /* Coral */
   --highlight-color-2: #f2d388; /* Sand */
   --highlight-color-3: #e3e3e3; /* Light Gray */
@@ -26,24 +22,20 @@
 
 /* Theme 3: Forest Twilight */
 .theme-3 {
-  --primary-color: #0a0a0a;
-  --secondary-color: #1f2a44;
+  --primary-color: #112617;
+  --secondary-color: #374b30;
   --default-text-color: #cccccc;
-  --secondary-text-color-light: #f2f2f2; /* Light Off-White */
-  --secondary-text-color-dark: #1f2a44; /* Dark (Same as Secondary Color) */
-  --highlight-color-1: #4caf50; /* Green */
+  --highlight-color-1: #eed3b1; /* Green */
   --highlight-color-2: #ffc107; /* Amber */
-  --highlight-color-3: #ff5722; /* Deep Orange */
+  --highlight-color-3: #e8ecd7; /* Deep Orange */
 }
 
-/* Theme 4: Sapphire Night */
+/* Theme 4: Crimson Blaze */
 .theme-4 {
-  --primary-color: #0b0c10;
-  --secondary-color: #1f2833;
-  --default-text-color: #e8e8e8;
-  --secondary-text-color-light: #fafafa; /* Almost White */
-  --secondary-text-color-dark: #1f2833; /* Dark (Same as Secondary Color) */
-  --highlight-color-1: #c5c6c7; /* Light Gray */
-  --highlight-color-2: #66fcf1; /* Cyan */
-  --highlight-color-3: #45a29e; /* Teal */
+  --primary-color: #4d423a; /* Dark Red */
+  --secondary-color: #a4957c; /* Firebrick */
+  --default-text-color: #ffffff; /* White */
+  --highlight-color-1: #abc4aa; /* Tomato */
+  --highlight-color-2: #f3deba; /* Hot Pink */
+  --highlight-color-3: #675d50; /* Gold */
 }

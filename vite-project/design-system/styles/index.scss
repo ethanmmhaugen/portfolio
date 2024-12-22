@@ -4,7 +4,7 @@
 body {
   background-color: var(--primary-color);
   color: var(--default-text-color);
-  font-family: var(--font-stack);
+  font-family: $font-stack;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -19,6 +19,15 @@ header {
 
 main {
   padding: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 button {
@@ -40,8 +49,4 @@ button:focus,
 
 .clickable {
   cursor: pointer;
-}
-
-.no-click {
-  cursor: not-allowed;
 }
