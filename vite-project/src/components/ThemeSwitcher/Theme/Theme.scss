@@ -62,6 +62,11 @@
       .visual {
         height: 100%;
         width: 100%;
+
+        .react-colorful {
+          height: 90%;
+          width: 100%;
+        }
       }
     }
     .color-details {
@@ -78,16 +83,22 @@
         margin-right: -6px;
       }
 
-      button {
+      .theme-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         align-self: center;
         margin-bottom: 26px;
         margin-top: auto;
         width: 100%;
-        background-color: rgb(196, 196, 196);
-        p {
-          text-transform: uppercase;
-          font-weight: 600;
-          color: var(--primary-color);
+        button {
+          width: 100%;
+          background-color: rgb(196, 196, 196);
+          p {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--primary-color);
+          }
         }
       }
 
@@ -117,24 +128,24 @@
           }
         }
 
-        .primary {
-          background-color: var(--primary-color);
-        }
-        .secondary {
-          background-color: var(--secondary-color);
-        }
-        .text-default {
-          background-color: var(--default-text-color);
-        }
-        .highlight-1 {
-          background-color: var(--highlight-color-1);
-        }
-        .highlight-2 {
-          background-color: var(--highlight-color-2);
-        }
-        .highlight-3 {
-          background-color: var(--highlight-color-3);
-        }
+        // // .primary {
+        // //   background-color: var(--primary-color);
+        // // }
+        // .secondary {
+        //   background-color: var(--secondary-color);
+        // }
+        // .text-default {
+        //   background-color: var(--default-text-color);
+        // }
+        // .highlight-1 {
+        //   background-color: var(--highlight-color-1);
+        // }
+        // .highlight-2 {
+        //   background-color: var(--highlight-color-2);
+        // }
+        // .highlight-3 {
+        //   background-color: var(--highlight-color-3);
+        // }
       }
     }
   }

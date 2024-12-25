@@ -45,11 +45,25 @@ const ThemeSwitcher: React.FC = () => {
     removeTheme(themeClass);
   };
 
+  const changeTheme = (updatedTheme: ThemeType) => {
+    setThemeOptions((prevThemes: ThemeType[]) =>
+      prevThemes.map((theme) => (theme.class === updatedTheme.class ? updatedTheme : theme))
+    );
+
+    // removeThemeCSS(updatedTheme.class);
+    // injectThemeCSS(updatedTheme);
+  };
+
+  const saveTheme = (updatedTheme: ThemeType) => {
+    removeThemeCSS(updatedTheme.class);
+    injectThemeCSS(updatedTheme);
+  };
+
   return (
     <div className="theme-container">
       <div className="theme-switcher">
         {themeOptions.map((theme: ThemeType) => (
-          <Theme theme={theme} deleteTheme={deleteTheme} />
+          <Theme theme={theme} deleteTheme={deleteTheme} onThemeChange={changeTheme} saveTheme={saveTheme} />
         ))}
       </div>
       <button onClick={addTheme} className="new-theme-button">
